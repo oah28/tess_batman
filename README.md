@@ -43,6 +43,9 @@ tess_batman
 |   |   |-- Sector7
 |-- sampleData
 |   | sample_Sector0
+|   |   |-- *.fits
+|   | sample_synthTESS
+|   |   |-- *.txt
 |   | sample_batmanCurves.csv
 |   | sample_batmanParams.csv
 |   | sample_candidates.csv
