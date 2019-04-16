@@ -1,0 +1,44 @@
+# This file was produced by the NASA Exoplanet Archive  http://exoplanetarchive.ipac.caltech.edu
+# Fri Apr 12 11:44:28 2019
+#
+# CONSTRAINT:  where (pl_facility like '%TESS%')
+#
+# COLUMN pl_hostname:    Host Name
+# COLUMN pl_letter:      Planet Letter
+# COLUMN pl_name:        Planet Name
+# COLUMN pl_discmethod:  Discovery Method
+# COLUMN pl_controvflag: Controversial Flag
+# COLUMN pl_pnum:        Number of Planets in System
+# COLUMN pl_orbper:      Orbital Period [days]
+# COLUMN pl_orbsmax:     Orbit Semi-Major Axis [AU])
+# COLUMN pl_orbeccen:    Eccentricity
+# COLUMN pl_orbincl:     Inclination [deg]
+# COLUMN pl_bmassj:      Planet Mass or M*sin(i) [Jupiter mass]
+# COLUMN pl_bmassprov:   Planet Mass or M*sin(i) Provenance
+# COLUMN pl_radj:        Planet Radius [Jupiter radii]
+# COLUMN pl_dens:        Planet Density [g/cm**3]
+# COLUMN pl_ttvflag:     TTV Flag
+# COLUMN pl_kepflag:     Kepler Field Flag
+# COLUMN pl_k2flag:      K2 Mission Flag
+# COLUMN pl_nnotes:      Number of Notes
+# COLUMN ra_str:         RA [sexagesimal]
+# COLUMN ra:             RA [decimal degrees]
+# COLUMN dec_str:        Dec [sexagesimal]
+# COLUMN dec:            Dec [decimal degrees]
+# COLUMN st_dist:        Distance [pc]
+# COLUMN st_optmag:      Optical Magnitude [mag]
+# COLUMN st_optband:     Optical Magnitude Band
+# COLUMN gaia_gmag:      G-band (Gaia) [mag]
+# COLUMN st_teff:        Effective Temperature [K]
+# COLUMN st_mass:        Stellar Mass [Solar mass]
+# COLUMN st_rad:         Stellar Radius [Solar radii]
+# COLUMN rowupdate:      Date of Last Update
+# COLUMN pl_facility:    Discovery Facility
+#
+pl_hostname,pl_letter,pl_name,pl_discmethod,pl_controvflag,pl_pnum,pl_orbper,pl_orbsmax,pl_orbeccen,pl_orbincl,pl_bmassj,pl_bmassprov,pl_radj,pl_dens,pl_ttvflag,pl_kepflag,pl_k2flag,pl_nnotes,ra_str,ra,dec_str,dec,st_dist,st_optmag,st_optband,gaia_gmag,st_teff,st_mass,st_rad,rowupdate,pl_facility
+HD 1397,b,HD 1397 b,Transit,0,1,11.53533000,0.109700,0.251000,88.990,0.41500,Mass,1.026,0.47700,0,0,0,0,00h17m47.15s,4.446472,-66d21m32.1s,-66.358910,79.75,7.781,V (Johnson),7.593,5521.00,1.32,2.34,2019-03-05,Transiting Exoplanet Survey Satellite (TESS)
+HD 202772 A,b,HD 202772 A b,Transit,0,1,3.30895800,0.052080,0.038000,84.510,1.01700,Mass,1.545,0.34300,0,0,0,0,21h18m47.901s,319.699588,-26d36m58.95s,-26.616375,147.20,,,8.227,6272.00,1.72,2.59,2019-01-31,Transiting Exoplanet Survey Satellite (TESS)
+HD 219666,b,HD 219666 b,Transit,0,1,6.03607000,0.063560,0.000000,86.380,0.05223,Mass,0.420,0.87000,0,0,0,0,23h18m13.630s,349.556792,-56d54m13.630s,-56.903786,94.43,,,9.650,5527.00,0.92,1.03,2019-03-05,Transiting Exoplanet Survey Satellite (TESS)
+LHS 3844,b,LHS 3844 b,Transit,0,1,0.46292913,0.006220,,88.500,,,0.116,,0,0,0,0,22h41m58.10s,340.492104,-69d10m08.4s,-69.168986,14.90,15.260,V (Johnson),13.393,3036.00,0.15,0.19,2019-01-24,Transiting Exoplanet Survey Satellite (TESS)
+TOI 172,b,TOI 172 b,Transit,0,1,9.47725000,0.091400,0.380600,88.200,5.42000,Mass,0.965,7.53000,0,0,0,0,21h06m31.65s,316.631875,-26d41m34.29s,-26.692858,336.47,,,11.193,5645.00,1.13,1.78,2019-03-28,Transiting Exoplanet Survey Satellite (TESS)
+HD 39091,c,pi Men c,Transit,0,2,6.26790000,0.068390,0.000000,87.456,0.01517,Mass,0.182,2.97000,0,0,0,1,05h37m09.89s,84.291214,-80d28m08.8s,-80.469124,18.28,5.670,V (Johnson),5.491,6037.00,1.09,1.10,2018-11-15,Transiting Exoplanet Survey Satellite (TESS)
