@@ -5,22 +5,30 @@ Welcome to the AST 520 final project!
 Exoplanets can be identified with similar accuracy and precision as citizen scientists by convolving TESS light curve data with modelled transit curves from BATMAN.
 
 ## Links
-[Final Project Overview](https://docs.google.com/document/d/1hIIUlYv_Pa79qHZdYeT0fcedpBuCfnFgZ9BqdtIjUvM)
+Some useful links:
+
+[Google Doc: Final Project Overview](https://docs.google.com/document/d/1hIIUlYv_Pa79qHZdYeT0fcedpBuCfnFgZ9BqdtIjUvM)
 
 [Google Drive: TESS Batman](https://drive.google.com/open?id=1hIIUlYv_Pa79qHZdYeT0fcedpBuCfnFgZ9BqdtIjUvM)
 
 [OverLeaf: Write-up](https://www.overleaf.com/6962119764bvptkvfvfdxb)
 
+[TESS: Bulk download page](https://archive.stsci.edu/tess/bulk_downloads/bulk_downloads_ffi-tp-lc-dv.html)
+
 ## Structure
 
 ```
-batman
+tess_batman
 |-- code
 |   |-- downloadTESS
 |       | tesscurl_sector_*_lc.sh
 |       | tess_download_batch.sh
+|   |-- makeSampleData
+|       | real_exoplanets.csv
+|       | real_exoplanets.py
 |-- data
 |   | batmanCurves.csv
+|   | batmanParams.csv
 |   | candidates.csv
 |   | confCandidates.csv
 |   |-- TESS
@@ -31,5 +39,30 @@ batman
 |   |   |-- Sector5
 |   |   |-- Sector6
 |   |   |-- Sector7
+|-- sampleData
+|   | sample_Sector0
+|   | sample_batmanCurves.csv
+|   | sample_batmanParams.csv
+|   | sample_candidates.csv
 | README.md
 ```
+
+### tess_batman/code/
+This is where all of the code for the project will be stored. As teams finish code Christian will update it here (teams are also welcome to open a pull request to add code directly to the repository as well, but this is not necessary).
+
+- `downloadTESS/`: scripts needed to bulk download the TESS lightcurves and the Monsoon script to batch it (see this [link](https://archive.stsci.edu/tess/bulk_downloads/bulk_downloads_ffi-tp-lc-dv.html) for the bulk download scripts)
+- `makeSampleData/`: scripts used to generate the sample data. Orbital parameters of confirmed exoplanets are stored in `real_exoplanets.csv` and they are used to create sample batman transit curves in `real_exoplanets.py`. See [tess_batman/sampleData/](#tess_batman/sampledata/) for generated files.
+
+### tess_batman/data/
+This is where the bulk of the data is stored. Because the TESS files are so big, they are excluded from this Git repository, but they will appear here in the `TESS/` folder on Monsoon.
+
+- the .csv files: the files each team will deliver to run the analysis (currently blank)
+- `TESS/`: all currently available TESS light curve data (only on Monsoon)
+
+### tess_batman/sampleData/
+Sample versions of the .csv files in `tess_batman/data/` are included to provide a template for input and output formats for each team. They also provide a starting point for the SCIENCE team to start investigating real transits. THese data are also available on the Google Drive [here](https://drive.google.com/drive/u/1/folders/126cUeBdO68Wx1mygxumo0xYIk0PhWFF-)
+
+- `sample_Sector0`: a subset of TESS lightcurve data stored in `.fits` files. The included lightcurves have had real exoplanet transits detected which correspond to the transits in the following .csv files.
+- `sample_batmanCurves.csv`: Batman modelled transit curves of 6 real transits observed in TESS data (five of these original light curves are in `sample_Sector0`). Column 0 is the time array and each other column is the amplitude of a batman curve normalized to 1. Rows are the time steps.
+- `sample_batmanParams.csv`: Batman parameters used to generate the modelled transit curves in `batmanCurves.csv`. The columns are the curve ID followed by the 9 batman parameters (note **u** is a string (with quotes) with one or more values, e.g. **"0.1,0.2"** or **"0.3"** etc.). The rows correspond to the generated curves with unique IDs.
+- `sample_candidates.csv`: The short list of candidates that the convolve team will generate. Columns are sector (folder of TESS data), tessFile (name of fits file which matched), matching batman curve ID, and the correlation (strength of the fit).
