@@ -34,7 +34,7 @@ t0 = Column(np.zeros(len(planets))) # set t0 to 0
 rp = planets['pl_radj'] / (9.731 * planets['st_rad'])  # planet radius
 a = planets['pl_orbsmax']*215/planets['st_rad']  # semi-major axis
 w = Column(np.zeros(len(planets))) # set w to 0
-u = Column(['0.1, 0.3']*len(planets))
+u = Column(['0.1 0.3']*len(planets))
 ld = Column(['quadratic']*len(planets))
 batmanParams.add_column(t0, name='t0')
 batmanParams.add_column(rp, name='rp')
@@ -57,7 +57,7 @@ for p in batmanParams:
     params.inc = p['inc']  # orbital inclination (in degrees)
     params.ecc = p['ecc']  # eccentricity
     params.w = p['w']  # longitude of periastron (in degrees)
-    params.u = [float(val) for val in p['u'].split(',')]  # limb darkening coefficients [u1, u2]
+    params.u = [float(val) for val in p['u'].split()]  # limb darkening coefficients [u1, u2]
     params.limb_dark = p['limb_dark']  # limb darkening model
 
     # Na-Na-Na-Na-Na-Na-Na-Na Na-Na-Na-Na-Na-Na-Na-Na

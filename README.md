@@ -1,5 +1,5 @@
 # AST 520: TESS BATMAN
-Welcome to the AST 520 final project! See below for some useful links, and a description of what's in this repository. This is also what you will see when you go to the folder on Monsoon (`/common/contrib/classroom/ast520/batman`).
+Welcome to the AST 520 final project! See below for some useful links, and a description of what's in this repository. This is also what you will see when you go to the folder on Monsoon (`/common/contrib/classroom/ast520/tess_batman`).
 
 ## Hypothesis
 Exoplanets can be identified with similar accuracy and precision as citizen scientists by convolving TESS light curve data with modelled transit curves from BATMAN.
@@ -69,5 +69,5 @@ Sample versions of the .csv files in `tess_batman/data/` are included to provide
 
 - `sample_Sector0`: a subset of TESS lightcurve data stored in `.fits` files. The included lightcurves have had real exoplanet transits detected which correspond to the transits in the following .csv files.
 - `sample_batmanCurves.csv`: Batman modelled transit curves of 6 real transits observed in TESS data (five of these original light curves are in `sample_Sector0`). Column 0 is the time array and each other column is the amplitude of a batman curve normalized to 1. Rows are the time steps.
-- `sample_batmanParams.csv`: Batman parameters used to generate the modelled transit curves in `batmanCurves.csv`. The columns are the curve ID followed by the 9 batman parameters (note **u** is a string (with quotes) with one or more values, e.g. **"0.1,0.2"** or **"0.3"** etc.). The rows correspond to the generated curves with unique IDs.
+- `sample_batmanParams.csv`: Batman parameters used to generate the modelled transit curves in `batmanCurves.csv`. The columns are the curve ID followed by the 9 batman parameters (note **u** is a string with one or more space-separated values, e.g. **"0.1 0.2"** or **"0.3"** etc.). The rows correspond to the generated curves with unique IDs.
 - `sample_candidates.csv`: The short list of candidates that the convolve team will generate. Columns are sector (folder of TESS data), tessFile (name of fits file which matched), matching batman curve ID, and the correlation (strength of the fit).
