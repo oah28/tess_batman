@@ -1,5 +1,5 @@
 # AST 520: TESS BATMAN
-Welcome to the AST 520 final project!
+Welcome to the AST 520 final project! See below for some useful links, and a description of what's in this repository. This is also what you will see when you go to the folder on Monsoon (`/common/contrib/classroom/ast520/batman`).
 
 ## Hypothesis
 Exoplanets can be identified with similar accuracy and precision as citizen scientists by convolving TESS light curve data with modelled transit curves from BATMAN.
@@ -7,11 +7,13 @@ Exoplanets can be identified with similar accuracy and precision as citizen scie
 ## Links
 Some useful links:
 
-[Google Doc: Final Project Overview](https://docs.google.com/document/d/1hIIUlYv_Pa79qHZdYeT0fcedpBuCfnFgZ9BqdtIjUvM)
-
-[Google Drive: TESS Batman](https://drive.google.com/open?id=1hIIUlYv_Pa79qHZdYeT0fcedpBuCfnFgZ9BqdtIjUvM)
-
 [OverLeaf: Write-up](https://www.overleaf.com/6962119764bvptkvfvfdxb)
+
+[Google Drive: TESS Batman](https://drive.google.com/drive/u/1/folders/1k24tJCjtpcPBKiviM_Z97FA63OkpH_I5)
+
+- [Google Doc: Final Project Overview](https://docs.google.com/document/d/1hIIUlYv_Pa79qHZdYeT0fcedpBuCfnFgZ9BqdtIjUvM)
+
+- [Drive: sample_data](https://drive.google.com/drive/u/1/folders/126cUeBdO68Wx1mygxumo0xYIk0PhWFF-)
 
 [TESS: Bulk download page](https://archive.stsci.edu/tess/bulk_downloads/bulk_downloads_ffi-tp-lc-dv.html)
 
@@ -60,7 +62,7 @@ This is where the bulk of the data is stored. Because the TESS files are so big,
 - `TESS/`: all currently available TESS light curve data (only on Monsoon)
 
 ### tess_batman/sampleData/
-Sample versions of the .csv files in `tess_batman/data/` are included to provide a template for input and output formats for each team. They also provide a starting point for the SCIENCE team to start investigating real transits. THese data are also available on the Google Drive [here](https://drive.google.com/drive/u/1/folders/126cUeBdO68Wx1mygxumo0xYIk0PhWFF-)
+Sample versions of the .csv files in `tess_batman/data/` are included to provide a template for input and output formats for each team. They also provide a starting point for the SCIENCE team to start investigating real transits. These data are also available on the Google Drive [here](https://drive.google.com/drive/u/1/folders/126cUeBdO68Wx1mygxumo0xYIk0PhWFF-)
 
 - `sample_Sector0`: a subset of TESS lightcurve data stored in `.fits` files. The included lightcurves have had real exoplanet transits detected which correspond to the transits in the following .csv files.
 - `sample_batmanCurves.csv`: Batman modelled transit curves of 6 real transits observed in TESS data (five of these original light curves are in `sample_Sector0`). Column 0 is the time array and each other column is the amplitude of a batman curve normalized to 1. Rows are the time steps.
