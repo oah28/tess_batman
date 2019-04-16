@@ -52,19 +52,19 @@ tess_batman
 | README.md
 ```
 
-### tess_batman/code/
+### code/
 This is where all of the code for the project will be stored. As teams finish code Christian will update it here (teams are also welcome to open a pull request to add code directly to the repository as well, but this is not necessary).
 
 - `downloadTESS/`: scripts needed to bulk download the TESS lightcurves and the Monsoon script to batch it (see this [link](https://archive.stsci.edu/tess/bulk_downloads/bulk_downloads_ffi-tp-lc-dv.html) for the bulk download scripts)
-- `makeSampleData/`: scripts used to generate the sample data. Orbital parameters of confirmed exoplanets are stored in `real_exoplanets.csv` and they are used to create sample batman transit curves in `real_exoplanets.py`. See [tess_batman/sampleData/](#tess_batman/sampledata/) for generated files.
+- `makeSampleData/`: scripts used to generate the sample data. Orbital parameters of confirmed exoplanets are stored in `real_exoplanets.csv` and they are used to create sample batman transit curves in `real_exoplanets.py`. See [tess_batman/sampleData/](./sampleData) for generated files.
 
-### tess_batman/data/
+### data/
 This is where the bulk of the data is stored. Because the TESS files are so big, they are excluded from this Git repository, but they will appear here in the `TESS/` folder on Monsoon.
 
 - the .csv files: the files each team will deliver to run the analysis (currently blank)
 - `TESS/`: all currently available TESS light curve data (only on Monsoon)
 
-### tess_batman/sampleData/
+### sampleData/
 Sample versions of the .csv files in `tess_batman/data/` are included to provide a template for input and output formats for each team. They also provide a starting point for the SCIENCE team to start investigating real transits. These data are also available on the Google Drive [here](https://drive.google.com/drive/u/1/folders/126cUeBdO68Wx1mygxumo0xYIk0PhWFF-)
 
 - `sample_Sector0`: a subset of TESS lightcurve data stored in `.fits` files. The included lightcurves have had real exoplanet transits detected which correspond to the transits in the following .csv files.
