@@ -20,60 +20,59 @@ def tconvolve(tess_dir,batman_dir, sector, start, end, output_dir, verbosity=0):
     output_dir (str): directory to write candidates.csv
     """
     start_time=time.time()
+    print("Starting tconvolve...")
     
-    model = ascii.read(p.join(batman_dir,"batmanCurves_small.csv"), 
-                       data_start=1, format='csv')
-    times = np.array(model['times'])
-
-    batman_curves = model.columns[1:]
-    
+    # Read in TESS Sector data
+    print("Reading TESS data...")
+    sector_name = "Sector{}".format(sector)
     if sector == 0:
-        sector_name = "sample_Sector"+str(sector)
-    else:
-        sector_name = "Sector"+str(sector)
+        sector_name = "sample_"+sector_name
     sector_path = p.join(tess_dir, sector_name)
     sector_files = glob.glob(p.join(sector_path,"*.fits"))
-#     print(p.join(sector_path,"*.fits"))
-#     print(sector_files)
+    tess_names = sector_files[start:end]
+    print("Found {} TESS files to process".format(len(tess_names)))
 
-    data = sector_files[start:end]
-    tess_names = []
-    #batman_indices = []
+    # Read in Batman Curves 
+    print("Reading Batman transit curves...")
+    batmanCurves = ascii.read(p.join(batman_dir,"batmanCurves_small.csv"), 
+                       data_start=1, format='csv')
+    times = np.array(batmanCurves['times'])
+    curve_names = batmanCurves.columns[1:]
+    print("Found {} Batman curves".format(len(curve_names)))
     
-    # output table
-
-    for file_path in data:
-        tess_file = p.basename(file_path)
-        print(tess_file)
+    # Do convolution on all tess files
+    for tess_fpath in tess_names:
+        tess_fname = p.basename(tess_fpath)
+        print("Starting TESS file: {}".format(tess_fname))
 
         try:
-            fits.getdata(file_path, ext=1).columns
-            with fits.open(file_path, mode="readonly") as hdulist:
+            with fits.open(tess_fpath, mode="readonly") as hdulist:
                 hdr = hdulist[0].header
-                tess_names.append(tess_file)
                 
                 # get time and flux
-                tess_bjds = hdulist[1].data['TIME']
-                pdcsap_fluxes = hdulist[1].data['PDCSAP_FLUX']
+                tess_time = hdulist[1].data['TIME']
+                tess_flux = hdulist[1].data['PDCSAP_FLUX']
         except Exception as e: 
-            print(e, "file:",file_path)
+            print("ERROR reading file: ", tess_fpath, " with error: ", e)
+            continue  # skip to next loop iter
         
         # set nans to 0
-        pdcsap_fluxes[np.isnan(pdcsap_fluxes)] = 0
-        tess_bjds[np.isnan(tess_bjds)] = 0
+        tess_flux[np.isnan(tess_flux)] = 0
+        tess_time[np.isnan(tess_time)] = 0
 
-        # Do convolution
-        max_array=np.zeros(len(batman_curves))
-        tmax_array=np.zeros(len(batman_curves))
-        for j, curvename in enumerate(batman_curves):
+        # Do convolution on each batman curve
+        max_array=np.zeros(len(curve_names))
+        tmax_array=np.zeros(len(curve_names))
+        print("Starting convolution...")
+        for j, curvename in enumerate(curve_names):
             # make batman same len at tess
-            batman_flux_nopad = model[curvename]
-            len_diff = len(tess_bjds)-len(batman_flux_nopad)
+            batman_flux_nopad = batmanCurves[curvename]
+            len_diff = len(tess_time)-len(batman_flux_nopad)
             batman_flux = np.pad(batman_flux_nopad, (len_diff, 0), 'constant', constant_values=(1,1))
             
             # run convolution
             batman_FFT=np.fft.fft(batman_flux)
-            tess_FFT=np.fft.fft(pdcsap_fluxes)
+            tess_FFT=np.fft.fft(tess_flux)
             convolution=(np.absolute(np.fft.ifft((batman_FFT)*(tess_FFT))))
             
             # Save max conv value and time
@@ -83,19 +82,22 @@ def tconvolve(tess_dir,batman_dir, sector, start, end, output_dir, verbosity=0):
             
         # Keep best curves
         mu, std = norm.fit(max_array)
-        good_max = max_array[np.where(max_array >= mu+3*std)]
-        # get curve ids for good_max
-        # get times for good max
-        num_good = len(good_max)
-        print("Curve: {}, num good fits: {}".format(curvename, num_good))
+        idxs = np.where(max_array >= mu+3*std)
+        convs = max_array[idxs]
+        times = tmax_array[idxs]
+        curves = curve_names[idxs]
+        ncurves = len(curves)
+        print("Found: {} fitting curves".format(ncurves))
         
+
+        # Make table
         candidates = Table()
-        candidates.add_column(Column([sector_name]*num_good), name="sector")
-        candidates.add_column(Column([tess_file]*num_good), name="tessFile")
-        #candidates.add_column(curvename, name="curveID")
-        candidates.add_column(Column(good_max), name="correlation")
-        #candidates.add_column(good_tmax, name="correlation")
-        print(good_max)
+        candidates.add_column(Column([sector_name]*ncurves), name="sector")
+        candidates.add_column(Column([tess_fname]*ncurves), name="tessFile")
+        candidates.add_column(Columns(curves), name="curveID")
+        candidates.add_column(Column(times), name="tcorr")
+        candidates.add_column(Column(convs), name="correlation")
+        
         ascii.write(candidates, output_dir+'candidates.csv', 
                     format='csv', overwrite=True, comment='#')
         end=time.time()
