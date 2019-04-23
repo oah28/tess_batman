@@ -1,0 +1,77 @@
+./log/tconvolve19456853-1.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 1 9530 12707 /common/contrib/classroom/ast520/tess_batman/data/tmp/s1/
+./log/tconvolve19456853-1.log:Convolved 3133/3177 tess files with 2560 curves in 1.27e+04 s
+./log/tconvolve19456853-2.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 2 9594 12792 /common/contrib/classroom/ast520/tess_batman/data/tmp/s2/
+./log/tconvolve19456853-2.log:Convolved 3137/3198 tess files with 2560 curves in 1.91e+04 s
+./log/tconvolve19456853-3.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 3 9594 12792 /common/contrib/classroom/ast520/tess_batman/data/tmp/s3/
+./log/tconvolve19456853-3.log:Convolved 3152/3198 tess files with 2560 curves in 1.92e+04 s
+./log/tconvolve19456853-4.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 4 11992 15990 /common/contrib/classroom/ast520/tess_batman/data/tmp/s4/
+./log/tconvolve19456853-4.log:Convolved 3929/3998 tess files with 2560 curves in 1.5e+04 s
+./log/tconvolve19456853-5.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 5 11997 15996 /common/contrib/classroom/ast520/tess_batman/data/tmp/s5/
+./log/tconvolve19456853-5.log:Convolved 3967/3999 tess files with 2560 curves in 1.58e+04 s
+./log/tconvolve19456853-6.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 6 11996 15995 /common/contrib/classroom/ast520/tess_batman/data/tmp/s6/
+./log/tconvolve19456853-6.log:Convolved 3952/3999 tess files with 2560 curves in 1.34e+04 s
+./log/tconvolve19456853-7.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 7 11997 15996 /common/contrib/classroom/ast520/tess_batman/data/tmp/s7/
+./log/tconvolve19456853-7.log:Convolved 3958/3999 tess files with 2560 curves in 1.45e+04 s
+./log/tconvolve19456854-1.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 1 0 3176 /common/contrib/classroom/ast520/tess_batman/data/tmp/s1/
+./log/tconvolve19456854-1.log:Convolved 3132/3176 tess files with 2560 curves in 1.26e+04 s
+./log/tconvolve19456854-2.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 2 0 3198 /common/contrib/classroom/ast520/tess_batman/data/tmp/s2/
+./log/tconvolve19456854-2.log:Convolved 3144/3198 tess files with 2560 curves in 1.94e+04 s
+./log/tconvolve19456854-3.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 3 0 3198 /common/contrib/classroom/ast520/tess_batman/data/tmp/s3/
+./log/tconvolve19456854-3.log:Convolved 3155/3198 tess files with 2560 curves in 1.93e+04 s
+./log/tconvolve19456854-4.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 4 0 3997 /common/contrib/classroom/ast520/tess_batman/data/tmp/s4/
+./log/tconvolve19456854-4.log:Convolved 3934/3997 tess files with 2560 curves in 1.52e+04 s
+./log/tconvolve19456854-5.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 5 0 3999 /common/contrib/classroom/ast520/tess_batman/data/tmp/s5/
+./log/tconvolve19456854-5.log:Convolved 3956/3999 tess files with 2560 curves in 1.57e+04 s
+./log/tconvolve19456854-6.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 6 0 3998 /common/contrib/classroom/ast520/tess_batman/data/tmp/s6/
+./log/tconvolve19456854-6.log:Convolved 3955/3998 tess files with 2560 curves in 1.34e+04 s
+./log/tconvolve19456854-7.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 7 0 3999 /common/contrib/classroom/ast520/tess_batman/data/tmp/s7/
+./log/tconvolve19456854-7.log:Convolved 3967/3999 tess files with 2560 curves in 1.43e+04 s
+./log/tconvolve19456855-1.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 1 3176 6353 /common/contrib/classroom/ast520/tess_batman/data/tmp/s1/
+./log/tconvolve19456855-1.log:Convolved 3122/3177 tess files with 2560 curves in 1.26e+04 s
+./log/tconvolve19456855-2.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 2 3198 6396 /common/contrib/classroom/ast520/tess_batman/data/tmp/s2/
+./log/tconvolve19456855-2.log:Convolved 3152/3198 tess files with 2560 curves in 1.92e+04 s
+./log/tconvolve19456855-3.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 3 3198 6396 /common/contrib/classroom/ast520/tess_batman/data/tmp/s3/
+./log/tconvolve19456855-3.log:Convolved 3133/3198 tess files with 2560 curves in 1.91e+04 s
+./log/tconvolve19456855-4.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 4 3997 7995 /common/contrib/classroom/ast520/tess_batman/data/tmp/s4/
+./log/tconvolve19456855-4.log:Convolved 3936/3998 tess files with 2560 curves in 1.51e+04 s
+./log/tconvolve19456855-5.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 5 3999 7998 /common/contrib/classroom/ast520/tess_batman/data/tmp/s5/
+./log/tconvolve19456855-5.log:Convolved 3957/3999 tess files with 2560 curves in 1.54e+04 s
+./log/tconvolve19456855-6.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 6 3998 7997 /common/contrib/classroom/ast520/tess_batman/data/tmp/s6/
+./log/tconvolve19456855-6.log:Convolved 3964/3999 tess files with 2560 curves in 1.33e+04 s
+./log/tconvolve19456855-7.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 7 3999 7998 /common/contrib/classroom/ast520/tess_batman/data/tmp/s7/
+./log/tconvolve19456855-7.log:Convolved 3962/3999 tess files with 2560 curves in 1.44e+04 s
+./log/tconvolve19456856-1.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 1 6353 9530 /common/contrib/classroom/ast520/tess_batman/data/tmp/s1/
+./log/tconvolve19456856-1.log:Convolved 3140/3177 tess files with 2560 curves in 1.28e+04 s
+./log/tconvolve19456856-2.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 2 6396 9594 /common/contrib/classroom/ast520/tess_batman/data/tmp/s2/
+./log/tconvolve19456856-2.log:Convolved 3161/3198 tess files with 2560 curves in 1.93e+04 s
+./log/tconvolve19456856-3.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 3 6396 9594 /common/contrib/classroom/ast520/tess_batman/data/tmp/s3/
+./log/tconvolve19456856-3.log:Convolved 3162/3198 tess files with 2560 curves in 2.13e+04 s
+./log/tconvolve19456856-4.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 4 7995 11992 /common/contrib/classroom/ast520/tess_batman/data/tmp/s4/
+./log/tconvolve19456856-4.log:Convolved 3928/3997 tess files with 2560 curves in 1.48e+04 s
+./log/tconvolve19456856-5.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 5 7998 11997 /common/contrib/classroom/ast520/tess_batman/data/tmp/s5/
+./log/tconvolve19456856-5.log:Convolved 3966/3999 tess files with 2560 curves in 1.55e+04 s
+./log/tconvolve19456856-6.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 6 7997 11996 /common/contrib/classroom/ast520/tess_batman/data/tmp/s6/
+./log/tconvolve19456856-6.log:Convolved 3972/3999 tess files with 2560 curves in 1.34e+04 s
+./log/tconvolve19456856-7.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 7 7998 11997 /common/contrib/classroom/ast520/tess_batman/data/tmp/s7/
+./log/tconvolve19456856-7.log:Convolved 3966/3999 tess files with 2560 curves in 1.44e+04 s
+./log/tconvolve19456857-1.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 1 12707 15884 /common/contrib/classroom/ast520/tess_batman/data/tmp/s1/
+./log/tconvolve19456857-1.log:Convolved 3125/3177 tess files with 2560 curves in 1.27e+04 s
+./log/tconvolve19456857-2.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 2 12792 15990 /common/contrib/classroom/ast520/tess_batman/data/tmp/s2/
+./log/tconvolve19456857-2.log:Convolved 3166/3198 tess files with 2560 curves in 1.94e+04 s
+./log/tconvolve19456857-3.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 3 12792 15990 /common/contrib/classroom/ast520/tess_batman/data/tmp/s3/
+./log/tconvolve19456857-3.log:Convolved 3146/3198 tess files with 2560 curves in 1.92e+04 s
+./log/tconvolve19456857-4.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 4 15990 19988 /common/contrib/classroom/ast520/tess_batman/data/tmp/s4/
+./log/tconvolve19456857-4.log:Convolved 3947/3998 tess files with 2560 curves in 1.52e+04 s
+./log/tconvolve19456857-5.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 5 15996 19996 /common/contrib/classroom/ast520/tess_batman/data/tmp/s5/
+./log/tconvolve19456857-5.log:Convolved 3961/4000 tess files with 2560 curves in 1.56e+04 s
+./log/tconvolve19456857-6.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 6 15995 19994 /common/contrib/classroom/ast520/tess_batman/data/tmp/s6/
+./log/tconvolve19456857-6.log:Convolved 3952/3999 tess files with 2560 curves in 1.32e+04 s
+./log/tconvolve19456857-7.log:running command: python /common/contrib/classroom/ast520/tess_batman/code/Convolve/convolve.py /common/contrib/classroom/ast520/tess_batman/data/TESS/ /common/contrib/classroom/ast520/tess_batman/data/ 7 15996 19995 /common/contrib/classroom/ast520/tess_batman/data/tmp/s7/
+./log/tconvolve19456857-7.log:Convolved 3968/3999 tess files with 2560 curves in 1.46e+04 s
+65120	./tmp/s1
+65524	./tmp/s2
+65540	./tmp/s3
+81864	./tmp/s4
+82396	./tmp/s5
+82336	./tmp/s6
+82392	./tmp/s7
