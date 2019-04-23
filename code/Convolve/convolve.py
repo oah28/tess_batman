@@ -1,13 +1,13 @@
-import numpy as np
-from scipy.stats import norm
-from astropy.io import fits
-from astropy.io import ascii
-from astropy.table import Table, Column
 import time
 import glob
 import os.path as p
+import numpy as np
+from scipy.signal import fftconvolve
+from astropy.io import ascii, fits
+from astropy.table import Table, Column
 
-def tconvolve(tess_dir,batman_dir, sector, start, end, output_dir, verbosity=0):
+
+def tconvolve(tess_dir, batman_dir, sector, start, end, output_dir, verbosity=0):
     """
     
     Parameters
@@ -19,8 +19,13 @@ def tconvolve(tess_dir,batman_dir, sector, start, end, output_dir, verbosity=0):
     end (int): file to end at
     output_dir (str): directory to write candidates.csv
     """
-    start_time=time.time()
-    print("Starting tconvolve...")
+    tconv_start = time.time()
+    print("===START TCONVOLVE===")
+    
+    # Handle relative paths
+    tess_dir = p.abspath(tess_dir)
+    batman_dir = p.abspath(batman_dir)
+    output_dir = p.abspath(output_dir)
     
     # Read in TESS Sector data
     print("Reading TESS data...")
@@ -30,80 +35,90 @@ def tconvolve(tess_dir,batman_dir, sector, start, end, output_dir, verbosity=0):
     sector_path = p.join(tess_dir, sector_name)
     sector_files = glob.glob(p.join(sector_path,"*.fits"))
     tess_names = sector_files[start:end]
-    print("Found {} TESS files to process".format(len(tess_names)))
+    ntess = len(tess_names)
+    print("Found {} TESS files to process".format(ntess))
 
     # Read in Batman Curves 
     print("Reading Batman transit curves...")
     batmanCurves = ascii.read(p.join(batman_dir,"batmanCurves_small.csv"), 
                        data_start=1, format='csv')
     times = np.array(batmanCurves['times'])
-    curve_names = batmanCurves.columns[1:]
-    print("Found {} Batman curves".format(len(curve_names)))
+    curve_names = np.array(batmanCurves.colnames[1:])
+    nbatman = len(curve_names)
+    print("Found {} Batman curves".format(nbatman))
     
+    nerr = 0  # count number of failed files
     # Do convolution on all tess files
     for tess_fpath in tess_names:
         tess_fname = p.basename(tess_fpath)
         print("Starting TESS file: {}".format(tess_fname))
+        tess_start = time.time()
 
         try:
             with fits.open(tess_fpath, mode="readonly") as hdulist:
                 hdr = hdulist[0].header
-                
-                # get time and flux
                 tess_time = hdulist[1].data['TIME']
                 tess_flux = hdulist[1].data['PDCSAP_FLUX']
         except Exception as e: 
             print("ERROR reading file: ", tess_fpath, " with error: ", e)
+            nerr += 1
             continue  # skip to next loop iter
         
-        # set nans to 0
-        tess_flux[np.isnan(tess_flux)] = 0
-        tess_time[np.isnan(tess_time)] = 0
-
+        # clean tess lightcurve of nans
+        med = np.nanmedian(tess_flux)
+        tess_flux[np.isnan(tess_flux)] = med
+        
+        tmean = np.mean(tess_flux)
+        tstd = np.std(tess_flux)
+        tess_flux = (tess_flux - tmean)/tstd
+        
         # Do convolution on each batman curve
-        max_array=np.zeros(len(curve_names))
-        tmax_array=np.zeros(len(curve_names))
-        print("Starting convolution...")
-        for j, curvename in enumerate(curve_names):
-            # make batman same len at tess
-            batman_flux_nopad = batmanCurves[curvename]
-            len_diff = len(tess_time)-len(batman_flux_nopad)
-            batman_flux = np.pad(batman_flux_nopad, (len_diff, 0), 'constant', constant_values=(1,1))
-            
+        peak_times = np.zeros(nbatman)
+        peak_convs = np.zeros(nbatman)
+        conv_start = time.time()
+        print("Starting convolutions...")
+        for i, curvename in enumerate(curve_names):
             # run convolution
-            batman_FFT=np.fft.fft(batman_flux)
-            tess_FFT=np.fft.fft(tess_flux)
-            convolution=(np.absolute(np.fft.ifft((batman_FFT)*(tess_FFT))))
-            
-            # Save max conv value and time
-            ind_max = np.argmax(convolution)
-            tmax_array[j]= ind_max
-            max_array[j] = convolution[ind_max]
-            
-        # Keep best curves
-        mu, std = norm.fit(max_array)
-        idxs = np.where(max_array >= mu+3*std)
-        convs = max_array[idxs]
-        times = tmax_array[idxs]
-        curves = curve_names[idxs]
-        ncurves = len(curves)
-        print("Found: {} fitting curves".format(ncurves))
-        
+            # new way
+            batman_curve = batmanCurves[curvename]
+            conv = np.abs(fftconvolve(tess_flux, batman_curve, 'same'))
+            ind_max = np.argmax(conv)
+            peak_times[i] = tess_time[ind_max]
+            peak_convs[i] = conv[ind_max]                             
 
+        conv_time = time.time() - conv_start
+        print("Convolved {} curves in {:.3} s".format(nbatman, conv_time))
+        
+        # Keep 10 best curves
+        idxs = peak_convs.argsort()[-10:]
+        convs = peak_convs[idxs]
+        times = peak_times[idxs]
+        curves = curve_names[idxs]
+        nfitcurves = len(curves)
+        print("Found: {} fitting curves".format(nfitcurves))
+        
         # Make table
-        candidates = Table()
-        candidates.add_column(Column([sector_name]*ncurves), name="sector")
-        candidates.add_column(Column([tess_fname]*ncurves), name="tessFile")
-        candidates.add_column(Columns(curves), name="curveID")
-        candidates.add_column(Column(times), name="tcorr")
-        candidates.add_column(Column(convs), name="correlation")
-        
-        ascii.write(candidates, output_dir+'candidates.csv', 
-                    format='csv', overwrite=True, comment='#')
-        end=time.time()
-        print(end-start_time)
+        if nfitcurves > 0:
+            outname = 'candidates_s{}_b{}_e{}_{}.csv'.format(sector,start,end,tess_fname)
+            outpath = p.join(output_dir, outname)
+            print("Writing table: {}".format(outname))
+            candidates = Table()
+            candidates.add_column(Column([sector_name]*nfitcurves), name="sector")
+            candidates.add_column(Column([tess_fname]*nfitcurves), name="tessFile")
+            candidates.add_column(Column(curves), name="curveID")
+            candidates.add_column(Column(times), name="tcorr")
+            candidates.add_column(Column(convs), name="correlation")
+
+            ascii.write(candidates, outpath, format='csv', overwrite=True, comment='#')
+            tess_time = time.time() - tess_start
+        else:
+            print("No curves found for {}, Skipping write...".format(tess_fname))
+        print("Finished TESS file in {:.3} s".format(tess_time))
     
-        
+    tconv_time = time.time() - tconv_start
+    print("Convolved {}/{} tess files with {} curves in {:.3} s".format(ntess-nerr, ntess, nbatman, tconv_time))
+    print("===END TCONVOLVE===")
+    
 def main():
     import argparse
     parser = argparse.ArgumentParser()
