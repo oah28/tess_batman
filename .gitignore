@@ -1,1 +1,5 @@
 TESS
+tmp
+log
+*.swp
+*.ipy*
