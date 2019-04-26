@@ -3,3 +3,4 @@ tmp
 log
 *.swp
 *.ipy*
+.vscode
