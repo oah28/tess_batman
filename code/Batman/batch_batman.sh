@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=TESS_Convolve
+#SBATCH --job-name=gen_batman
 #SBATCH --workdir=/common/contrib/classroom/ast520/tess_batman/code/Batman/
 #SBATCH --output=/common/contrib/classroom/ast520/tess_batman/data/log/batman%A.log
 #SBATCH --time=04:00:00
@@ -14,7 +14,7 @@ echo Starting
 
 source activate batman
 
-pcmd="python $TBP/code/Batman/batman.py $TBP/code/Batman/param.txt $TBP/data/ $S $start $end $TBP/data/tmp/s$S/"
+pcmd="python $TBP/code/Batman/batman_monsoon.py $TBP/code/Batman/param.txt $TBP/data/"
 echo running command: $pcmd
 srun $pcmd
 echo Finished

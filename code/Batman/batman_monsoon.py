@@ -123,8 +123,8 @@ def make_batman(paramfile, outdir):
 def main():
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--params", type=str)
-    parser.add_argument("-o", "--outdir", type=str)
+    parser.add_argument("params", type=str)
+    parser.add_argument("outdir", type=str)
     args = parser.parse_args()
     make_batman(args.params, args.outdir)
 
