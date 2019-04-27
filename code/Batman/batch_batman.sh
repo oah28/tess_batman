@@ -2,12 +2,13 @@
 #SBATCH --job-name=gen_batman
 #SBATCH --workdir=/common/contrib/classroom/ast520/tess_batman/code/Batman/
 #SBATCH --output=/common/contrib/classroom/ast520/tess_batman/data/log/batman%A.log
-#SBATCH --time=04:00:00
-#SBATCH --mem=4000
+#SBATCH --time=05:00:00
+#SBATCH --mem=40000
 #SBATCH --account=ast520-spr19
 
 # 2500 curves ran in 2 minutes
 # 100x(2500) curves in about 2 hours (gave it 4 because monsoon cores slower)
+# 250000 curves ran in 10 minutes, used 8 GB RAM
 
 TBP=/common/contrib/classroom/ast520/tess_batman
 echo Starting

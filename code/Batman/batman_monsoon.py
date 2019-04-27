@@ -50,7 +50,7 @@ def make_batman(paramfile, outdir):
     Limb darkening: 
     '''
    # read the parameter file
-    print("reading param file")
+    print("reading param file",flush=True)
     with open(paramfile, "r") as file: 
         data = file.readlines()
         lc_file = outdir+data[1][19:-1]
@@ -66,7 +66,7 @@ def make_batman(paramfile, outdir):
 # print(lc_file, pc_file, r_min, r_max, r_step, w_min, w_max, w_step)
 
 # set up range of parameters
-    print("Setting param ranges")
+    print("Setting param ranges",flush=True)
     potential_radii = np.logspace(r_min, r_max, r_step)
     potential_widths = np.logspace(w_min, w_max, w_step)
     radii = []
@@ -100,24 +100,31 @@ def make_batman(paramfile, outdir):
     batmanParams['curveID'] = ID
 
 # actually generate the curves and add them to the curve file
-    print("Generating curves")
+    print("Generating curves",flush=True)
     start = time()
     t = np.arange(-2.5, 2.5, 0.013889)
-    batmanCurves = Table()
-    batmanCurves['times'] = t
+    batmanDict = {'times': t}
     for i in range(len(batmanParams)): 
         p = batmanParams[i]
         f = make_lightcurve(p['rp'], p['i'], p['width'], p['ld'], 
                             [float(val) for val in p['u'].split()], t)
         name = 'curve ' + str(i)
-        batmanCurves[name] = f
+        batmanDict[name] = f
+        if i % 100 == 0:
+            print("Generated {}/{} curves in {} s".format(i+1,len(batmanParams),time()-start),flush=True)
+    
+    batmanCurves = Table(batmanDict)
     end = time()
-    print("Generated {} curves in {} s".format(i, end-start))
+    print("Generated {} curves in {} s".format(i, end-start),flush=True)
             
 # could do this seperately 
-    print("Writing params and curves to files")
+    twrite = time()
+    print("Writing batmanParams to file",flush=True)
     ascii.write(batmanParams, pc_file, format='csv', overwrite=True, comment='#')
+    print("Wrote params in {} s".format(time()-twrite),flush=True)
+    print("Writing batmanCurves to file",flush=True)
     ascii.write(batmanCurves, lc_file, format='csv', overwrite=True, comment='#')
+    print("Wrote both files in {} s".format(time()-twrite),flush=True)
 
 
 def main():
