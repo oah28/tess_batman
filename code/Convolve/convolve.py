@@ -58,7 +58,11 @@ def tconvolve(tess_dir, batman_dir, batman_suffix, sector, start, end, output_di
 
     # Read in Batman Curves 
     print("Reading Batman transit curves...")
-    batmanCurves = ascii.read(p.join(batman_dir,"batmanCurves{}.csv".format(batman_suffix)), 
+    batman_name = "batmanCurves{}.csv".format(batman_suffix)
+    print(batman_name)
+    #if sector == 0:
+    #    batman_name = "sample_"+batman_name
+    batmanCurves = ascii.read(p.join(batman_dir,batman_name), 
                        data_start=1, format='csv')
     times = np.array(batmanCurves['times'])
     curve_names = np.array(batmanCurves.colnames[1:])
