@@ -84,8 +84,8 @@ def make_batman(paramfile, outdir):
                 
 # set up file that will eventually become the curve id file
     batmanParams = Table([radii, incs, widths], names =('rp', 'i', 'width'))
-    u = Column(['0.1 0.3'] * len(batmanParams))
-    ld = Column(['quadratic'] * len(batmanParams))
+    u = Column(['1.1 0.1 0.3 0.3] * len(batmanParams))
+    ld = Column(['nonlinear'] * len(batmanParams))
     t0 = Column(np.zeros(len(batmanParams))) # set t0 to 0
     e = Column(np.zeros(len(batmanParams)))
     w = Column(np.zeros(len(batmanParams)))
